@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block maintitle %}
+Equidé #{{equide.id}}
+{% endblock %}
+
+
+
+{% block name %}
+
+{% if form.errors %}
+    <ul class="errors">
+        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+            {% for error in field_errors %}
+                <li>{{ form[field_name].label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form action="{{url_for('equides.update',id=equide.id)}}" method="POST">    
+    {{form.id}}
+    {{form.user_id}}
+
+    <div class="field">
+        {{form.name.label(class="label")}}
+        <div class="control">
+            {{form.name(class='input')}}
+        </div>
+
+    <div class="field">
+        {{form.numero_sire.label(class="label")}}
+        <div class="control">
+            {{form.numero_sire(class='input')}}
+        </div>
+
+    <div class="field">
+        {{form.race.label(class="label")}}
+        <div class="control">
+            {{form.race(class='input')}}
+        </div>
+    </div>
+
+    <div class="field">
+      {{form.date_naissance.label(class="label")}}
+      <div class="control">
+          {{form.date_naissance(class='input')}}
+      </div>
+  </div>
+
+    <div class="field">
+        {{form.lieu_detention.label(class="label")}}
+        <div class="control">
+            {{form.lieu_detention(class='input')}}
+        </div>
+
+        <div class="field">
+            {{form.sexe.label(class="label")}}
+            <div class="control">
+                {{form.sexe(class='input')}}
+            </div>
+
+            <div class="field">
+                {{form.numero_puce.label(class="label")}}
+                <div class="control">
+                    {{form.numero_puce(class='input')}}
+                </div>
+
+                <div class="field">
+                    {{form.nom_pere.label(class="label")}}
+                    <div class="control">
+                        {{form.nom_pere(class='input')}}
+                    </div>
+
+                    <div class="field">
+                        {{form.nom_mere.label(class="label")}}
+                        <div class="control">
+                            {{form.nom_mere(class='input')}}
+                        </div>
+
+                        <div class="field">
+                            {{form.proprietaire.label(class="label")}}
+                            <div class="control">
+                                {{form.proprietaire(class='input')}}
+                            </div>
+
+                            <div class="field">
+                                {{form.veterinaire.label(class="label")}}
+                                <div class="control">
+                                    {{form.veterinaire(class='input')}}
+                                </div>
+
+                                <div class="field">
+                                    {{form.distinctions.label(class="label")}}
+                                    <div class="control">
+                                        {{form.distinctions(class='input')}}
+                                    </div>
+</div>
+   
+    <!-- <div class="field">
+        <label class="label" for="done">Statut</label>
+        <div class="control">
+            <div class="select">
+                <select name="done">
+                    <option value="1">Fait</option>
+                    <option value="0">A faire</option>
+                </select>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="field is-grouped">
+        <div class="control">
+            <input class="button is-primary" style="background: rgb(35, 151, 177);color:white;" type="submit" value="Mettre à jour" />
+        </div>
+        <div class="control">
+            <a class="button is-link is-light" style="background: rgb(35, 151, 177);color:white;" href="{{url_for('equides.read_all')}}">Annuler</a>
+        </div>
+        <div class="control">
+            <a class="button is-danger" style="background: rgb(35, 151, 177);color:white;" href="{{url_for('equides.delete', id=equide.id)}}">Supprimer</a>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

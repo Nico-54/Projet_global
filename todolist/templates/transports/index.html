@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block maintitle %}
+<link rel="stylesheet" href="{{ url_for('static', filename= 'css/styleAcc.css') }}">
+{{title}}
+{% endblock %}
+
+{% block name %}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="button is-link is-primary" style="background: rgb(35, 151, 177);color:white;" href="{{url_for('transports.create')}}">
+            Nouveau transport
+        </a>
+    </div>
+</nav>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                N°
+            </th>
+            <th>
+                Noms des équidés
+            </th>
+            <th>
+                Nombre de chevaux
+            </th>
+            <th>
+                Type de véhicule
+            </th>
+            <th>
+                Lieu de départ
+            </th>
+            <th>
+                Date et heure de départ
+            </th>
+            <th>
+                Lieu d'arrivée
+            </th>
+            <th>
+                Date et heure d'arrivée
+            </th>
+            <th>
+                Action
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for transport in transports%}
+        <tr>
+            <td>{{transport.id}}</td>
+            <td>
+                <a class="is-link" href="{{url_for('transports.read_one',id=transport.id)}}">
+                    {{transport.name_equide}}
+                </a>
+            </td>
+            <td>
+                <a class="is-link">
+                    {{transport.nombre_equide}}
+                </a>
+            </td>
+          <td>
+            <a class="is-link">
+                {{transport.type_transport}}
+            </a>
+        </td>
+        <td>
+            <a class="is-link">
+                {{transport.lieu_depart}}
+            </a>
+        </td>
+        <td>
+            <a class="is-link">
+                {{transport.date_depart}}
+            </a>
+        </td>
+        <td>
+            <a class="is-link">
+                {{transport.lieu_arrivee}}
+            </a>
+        </td>
+        
+        <td>
+            <a class="is-link">
+                {{transport.date_arrivee}}
+            </a>
+        </td>
+            
+            <td>
+                <div class="buttons">
+                    <a class="button_modif" style="background: rgb(35, 151, 177);color:white;" href="{{url_for('transports.update', id=transport.id)}}">Modifier</a>
+                    <a class="button is-danger" style="background: rgb(35, 151, 177);color:white;" href="{{url_for('transports.delete', id=transport.id)}}">Supprimer</a>
+                </div>
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{% endblock %}

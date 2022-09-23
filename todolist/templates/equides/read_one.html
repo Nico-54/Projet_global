@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block maintitle %}
+    Equidé #{{equide.id}}
+{% endblock %}
+
+{% block name %}
+<div class="all_equide">
+
+    <h5>Nom :</h5>
+    <p>
+        {{equide.name}}
+    </p>
+    <h5>Numero SIRE :</h5>
+    <p>
+        {{equide.numero_sire}}
+    </p>
+    <h5>Race :</h5>
+    <p>
+        {{equide.race}}
+    </p>
+    <h5>Date de naissance :</h5>
+    <p>
+        {{equide.date_naissance}}
+    </p>
+    <h5>Lieu de détention :</h5>
+    <p>
+        {{equide.lieu_detention}}
+    </p>
+    <h5>Sexe :</h5>
+    <p>
+        {{equide.sexe}}
+    </p>
+    <h5>Numéro de puce :</h5>
+    <p>
+        {{equide.numero_puce}}
+    </p>
+    <h5>Nom du père :</h5>
+    <p>
+        {{equide.nom_pere}}
+    </p>
+    <h5>Nom de la mère :</h5>
+    <p>
+        {{equide.nom_mere}}
+    </p>
+    <h5>Propriétaire :</h5>
+    <p>
+        {{equide.proprietaire}}
+    </p>
+    <h5>Vétérinaire :</h5>
+    <p>
+        {{equide.veterinaire}}
+    </p>
+    <h5>Distinctions :</h5>
+    <p>
+        {{equide.distinctions}}
+    </p>
+</div>
+<div>
+    <a class="button" style="background: rgb(35, 151, 177);color:white;" href="{{url_for('equides.update', id=equide.id)}}">Modifier</a>
+
+    <a class="button_read_one" style="background: rgb(35, 151, 177);color:white;" href="">SOINS</a>
+    <a class="button_read_one is-danger" style="background: rgb(35, 151, 177);color:white;" href="{{url_for('transports.read_all', id=equide.id)}}">TRANSPORT</a>
+</div>
+{% endblock %}

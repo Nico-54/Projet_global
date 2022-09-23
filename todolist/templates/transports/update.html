@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block maintitle %}
+Equidé #{{transport.id}}
+{% endblock %}
+
+
+
+{% block name %}
+
+{% if form.errors %}
+    <ul class="errors">
+        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+            {% for error in field_errors %}
+                <li>{{ form[field_name].label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form action="{{url_for('transports.update',id=transport.id)}}" method="POST">    
+    {{form.id}}
+    {{form.user_id}}
+<div class="update_transport">
+    <div class="field">
+        {{form.name_equide.label(class="label")}}
+        <div class="control">
+            {{form.name_equide(class='input')}}
+        </div>
+    </div> 
+    <div class="field">
+        {{form.nombre_equide.label(class="label")}}
+        <div class="control">
+            {{form.nombre_equide(class='input')}}
+        </div>
+    </div> 
+    <div class="field">
+        {{form.transporteur.label(class="label")}}
+        <div class="control">
+            {{form.transporteur(class='input')}}
+        </div>
+    </div>
+
+    <div class="field">
+      {{form.type_transport.label(class="label")}}
+      <div class="control">
+          {{form.type_transport(class='input')}}
+      </div>
+  </div>
+
+    <div class="field">
+        {{form.lieu_depart.label(class="label")}}
+        <div class="control">
+            {{form.lieu_depart(class='input')}}
+        </div>
+    </div> 
+        <div class="field">
+            {{form.date_depart.label(class="label")}}
+            <div class="control">
+                {{form.date_depart(class='input')}}
+            </div>
+        </div> 
+            <div class="field">
+                {{form.lieu_arrivee.label(class="label")}}
+                <div class="control">
+                    {{form.lieu_arrivee(class='input')}}
+                </div>
+            </div> 
+                <div class="field">
+                    {{form.date_arrivee.label(class="label")}}
+                    <div class="control">
+                        {{form.date_arrivee(class='input')}}
+                    </div>
+                </div>                        
+                    <div class="field">
+                        {{form.duree_trajet.label(class="label")}}
+                        <div class="control">
+                            {{form.duree_trajet(class='input')}}
+                        </div>
+                    </div>           
+                        <div class="field">
+                            {{form.commentaire.label(class="label")}}
+                            <div class="control">
+                                {{form.commentaire(class='input')}}
+                            </div>
+                        </div>
+</div>
+   
+    <!-- <div class="field">
+        <label class="label" for="done">Statut</label>
+        <div class="control">
+            <div class="select">
+                <select name="done">
+                    <option value="1">Fait</option>
+                    <option value="0">A faire</option>
+                </select>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="field is-grouped">
+        <div class="control">
+            <input class="button is-primary" style="background: rgb(35, 151, 177);color:white;" type="submit" value="Mettre à jour" />
+        </div>
+        <div class="control">
+            <a class="button is-link is-light" style="background: rgb(35, 151, 177);color:white;" href="{{url_for('transports.read_all')}}">Annuler</a>
+        </div>
+        <div class="control">
+            <a class="button is-danger" style="background: rgb(35, 151, 177);color:white;" href="{{url_for('transports.delete', id=transport.id)}}">Supprimer</a>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

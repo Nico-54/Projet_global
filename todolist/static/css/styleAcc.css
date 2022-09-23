@@ -1,0 +1,109 @@
+h1{
+
+  background-color: rgba(13, 145, 145, 0.295);
+  
+  }
+  
+  body {
+      padding-bottom: 10px;
+    }
+    
+  .navbar {
+      margin-bottom: 20px;
+    }
+
+    .button_modif{
+      padding-right: 20px;
+    }
+   
+  footer {
+
+       position:absolute;
+       bottom:0;
+       width:100%;
+       height: 80px;   /* Hauteur du pied de page */
+
+      text-align: center;
+      padding: 10px;
+      background-color: rgb(35, 151, 177);
+      color: white;
+    }
+  
+  
+  .titre {
+    text-align: center;
+  }
+  
+  /* Create two equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .btn {
+    padding-left: 10px;
+  }
+  
+  .row {
+    padding-left: 10px;
+    
+
+  }
+
+  .container text{
+
+text-align: center;
+margin-right: 10px;
+
+  }
+
+  .search_bar{
+
+width: auto;
+padding-left: 60%;
+
+  }
+
+  .input_saisie{
+    
+    width: 80%;
+  }
+
+  .list-all{
+
+    text-align: center;
+
+  }
+
+  form { 
+    margin: auto; 
+    width:15%;
+    }
+
+.all_transport {
+  text-align: center;
+  column-count: 2;
+}
+
+.all_equide {
+  text-align: center;
+  column-count: 2;
+}
+
+.table {
+  text-align: center;
+}
+
+ .button_read_one {
+  float: right;
+  margin: 3px;
+ }

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block maintitle %}
+<link rel="stylesheet" href="{{ url_for('static', filename= 'css/styleAcc.css') }}">
+{{title}}
+{% endblock %}
+
+{% block name %}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="button is-link is-primary" style="background: rgb(35, 151, 177);color:white;" href="{{url_for('equides.create')}}">
+            Nouvel équidé
+        </a>
+    </div>
+</nav>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                N°
+            </th>
+            <th>
+                Nom
+            </th>
+            <th>
+                Numero Sire
+            </th>
+            <th>
+                Race
+            </th>
+            <th>
+                Lieu de détention
+            </th>
+            <th>
+                Sexe
+            </th>
+            <th>
+                Numéro de puce
+            </th>
+            <th>
+                Vétérinaire
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for equide in equides%}
+        <tr>
+            <td>{{equide.id}}</td>
+            <td>
+                <a class="is-link" href="{{url_for('equides.read_one',id=equide.id)}}">
+                    {{equide.name}}
+                </a>
+            </td>
+            <td>
+                <a class="is-link">
+                    {{equide.numero_sire}}
+                </a>
+            </td>
+            <td>
+              <a class="is-link">
+                  {{equide.race}}
+              </a>
+          </td>
+          
+        <td>
+            <a class="is-link">
+                {{equide.lieu_detention}}
+            </a>
+        </td>
+        <td>
+            <a class="is-link">
+                {{equide.sexe}}
+            </a>
+        </td>
+        <td>
+            <a class="is-link">
+                {{equide.numero_puce}}
+            </a>
+        </td>
+        
+        <td>
+            <a class="is-link">
+                {{equide.veterinaire}}
+            </a>
+        </td>
+            
+            <td>
+                <div class="buttons">
+                    <a class="button_modif" style="background: rgb(35, 151, 177);color:white;" href="{{url_for('equides.update', id=equide.id)}}">Modifier</a>
+
+                </div>
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{% endblock %}

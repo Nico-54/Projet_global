@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block maintitle %}
+    Equidé #{{transport.id}}
+{% endblock %}
+
+{% block name %}
+<div class="all_transport">
+
+    <h5>Noms des équidés :</h5>
+    <p>
+        {{transport.name_equide}}
+    </p>
+    <h5>Nombre d'équidé :</h5>
+    <p>
+        {{transport.nombre_equide}}
+    </p>
+    <h5>Nom du transporteur :</h5>
+    <p>
+        {{transport.transporteur}}
+    </p>
+    <h5>Type de véhicule :</h5>
+    <p>
+        {{transport.type_transport}}
+    </p>
+    <h5>Lieu de départ :</h5>
+    <p>
+        {{transport.lieu_depart}}
+    </p>
+    <h5>Date de départ :</h5>
+    <p>
+        {{transport.date_depart}}
+    </p>
+    <h5>Lieu d'arrivée :</h5>
+    <p>
+        {{transport.lieu_arrivee}}
+    </p>
+    <h5>Date d'arrivée :</h5>
+    <p>
+        {{transport.date_arrivee}}
+    </p>
+    <h5>Duree du trajet :</h5>
+    <p>
+        {{transport.duree_trajet}}
+    </p>
+    <h5>Commentaire :</h5>
+    <p>
+        {{transport.commentaire}}
+    </p>
+</div>
+<div>
+    <a class="button" style="background: rgb(35, 151, 177);color:white;" href="{{url_for('transports.update', id=transport.id)}}">Modifier</a>
+    <a class="button is-danger" style="background: rgb(35, 151, 177);color:white;" href="{{url_for('transports.delete', id=transport.id)}}">Supprimer</a>
+
+    <a class="button_read_one" style="background: rgb(35, 151, 177);color:white;" href="{{url_for('transports.read_all', id=transport.id)}}">Transports</a>
+    <a class="button_read_one is-danger" style="background: rgb(35, 151, 177);color:white;" href="">Créer un PDF</a>
+</div>
+{% endblock %}

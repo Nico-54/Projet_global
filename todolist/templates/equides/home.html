@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block maintitle %}
+<link rel="stylesheet" href="{{ url_for('static', filename= 'css/styleAcc.css') }}">
+{{title}}
+{% endblock %}
+
+{% block name %}
+<body>
+                                                    <!--  HAUT DE PAGE -->
+
+
+
+                                                    <!--  CENTRE DE PAGE -->
+
+      <h1><center>  Bienvenu sur la page d'accueil </center></h1>
+      <br><br><br>
+
+                                                     <!--  page sur 3 colonnes-->
+
+
+      
+      <div class="container text">
+
+        <div class="row">                            <!--  en longer ->  -->
+
+          <div class="col">                           <!--  Colonne 1  -->
+             <h2> Informations du centre : </h2><br>
+
+               <br><button type="submit" class="btn btn-primary">fiche veterinaire du centre</button> <br><br><br>
+                <button type="submit" class="btn btn-primary">Soins</button> <br><br><br>
+                <button type="submit" class="btn btn-primary">Transports</button> <br><br><br>
+          </div>
+        
+
+
+
+          <div class="col">                                     <!--  Colonne 2 -->
+            <div class="list-group w-auto">
+              <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+              
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <h6 class="mb-0">Rappel Santé</h6>
+                    <p class="mb-5 opacity-75"><br><br>Rappel de Vaccin pour cachou</p>
+                  </div>
+                  <small class="opacity-50 text-nowrap">now</small>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <h6 class="mb-0">Rappel Santé 2</h6>
+                    <p class="mb-5 opacity-75"><br><br>Rappel de Vaccin pour cachou</p>
+                  </div>
+                  <small class="opacity-50 text-nowrap">now</small>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                
+                  <div class="d-flex gap-2 w-100 justify-content-between">
+                    <div>
+                      <h6 class="mb-0">Rappel Santé 3</h6>
+                      <p class="mb-5 opacity-75"><br><br>Rappel de Vaccin pour cachou</p>
+                    </div>
+                    <small class="opacity-50 text-nowrap">now</small>
+                  </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+     <!--  PIED DE PAGE -->
+
+
+<link rel="stylesheet" href="{{url_for('static', filename = 'css/Bootstrap.css') }}">
+</body>
+{% endblock %}
