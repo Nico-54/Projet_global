@@ -1,0 +1,21 @@
+html, body {
+    background-color: black;
+}
+
+p.title {
+    color: white;
+    text-align: center;
+}
+
+p.texte {
+    color: white;
+    text-align: center;
+}
+
+div {
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+ 
