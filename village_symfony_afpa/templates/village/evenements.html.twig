@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<center><h1 id ="titreActu"class="titre">{{ titre }}</h1></center>
+</br>
+
+<div class="evenements">
+        {% for evenements in evenements %}
+        <article>
+            <h3>{{ evenements.titre }}</h3>
+            <h4>{{ evenements.CreatedAt | date('d/m/Y à H:i') }}</h4>
+            <br>
+            <div class="content">
+                <img src="{{ evenements.image }}" alt="">
+                {{ evenements.text | raw }}
+                <br>
+            </div>
+        </article>
+        <br>
+        {% endfor %}
+
+</div>
+
+{% endblock %}

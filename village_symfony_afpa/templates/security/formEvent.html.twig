@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1 class="titres">{{ titre }}</h1>
+
+<div style="width: 50%; margin:0 auto;  text-align:center;">
+    <div style="margin: 20px;">{{ form_start(formEv, {'attr': {'novalidate': 'novalidate'}}) }}</div>
+    <div style="margin: 20px;">{{ form_row(formEv.titre, {'attr': {'placeholder': 'Titre'}}) }}</div>
+    <div style="margin: 20px;">{{ form_row(formEv.text, {'attr': {'placeholder': 'Contenu'}}) }}</div>
+    <div style="margin: 20px;">{{ form_row(formEv.image, {'attr': {'placeholder': 'Insérer une image'}}) }}</div>
+
+    <button onclick="location.href ='{{ path('security_admin') }}';" type="submit" class="btn btn-primary">
+        {% if editMode %}
+        Modifier
+        {% else %}
+        Ajouter 
+        {% endif %}
+    </button>
+<br><br><br><br>
+</div>
+
+{{ form_end(formEv) }}
+
+{% endblock %}

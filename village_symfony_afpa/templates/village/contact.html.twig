@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1 class="titres">{{ titre }}</h1>
+</br>
+
+
+        {{ form_start(formContact, {'attr': {'novalidate': 'novalidate'}}) }}
+
+        <div>{{ form_row(formContact.Nom, {'attr': {'placeholder': 'Votre nom'}}) }}
+        {{ form_row(formContact.Prenom, {'attr': {'placeholder': 'Votre prénom'}}) }}
+        {{ form_row(formContact.Mail, {'attr': {'placeholder': 'Votre email'}}) }}
+        {{ form_row(formContact.Message, {'attr': {'placeholder': 'Votre message'}}) }}</div>
+
+
+        <button type="submit" class="btn btn-outline-success">Envoyez</button>
+
+        {{ form_end(formContact) }}
+
+{% endblock %}

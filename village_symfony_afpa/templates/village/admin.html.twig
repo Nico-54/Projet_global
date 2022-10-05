@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<body>
+    <div class="container mt-2">
+	    <h1 class="titres">{{ titre }}</h1>
+        <ul class="nav nav-tabs">
+            <li class="nav-item"><a href="#event"><button type="button" class= "btn-info disabled" data-bs-toggle="tab" >Evénements</li></a></button>
+            <li class="nav-item"><a href="#actu"><button type="button" class="btn-info disabled" data-bs-toggle="tab">Actualités</li></a></button>
+            <li class="nav-item"><button type="button" class="btn-info disabled" data-bs-toggle="tab" href="" onclick="location.href ='{{ path('createEvent') }}';">Créer un événement</li>
+            <li class="nav-item"><button type="button" class="btn-info disabled" data-bs-toggle="tab" href="" onclick="location.href ='{{ path('createActu') }}';">Créer une acutalité</li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="event">
+                {% for evenements in evenements %}
+                <div style="align-items: center;" class="row border g-0 rounded shadow-sm">
+                    <div class="col">
+                        <p class="titre">Titre :</p>
+                        <p>{{ evenements.titre }}</p>
+                    </div>
+                    <div class="col">
+                         <p>{{ evenements.text | raw }}</p>
+                    </div>
+                    <div class="col">
+                        <img src="{{ evenements.image }}" class="img-thumbnail dimension">                    
+                    </div>
+                     <div class="col-auto">
+                        <button type="button" class="btn btn-outline-warning" onclick="location.href ='{{ path('editEvent', {"id": evenements.id}) }}';">Modifier</button>                           
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-outline-danger" onclick="location.href = '{{ path('deleteEvent', {"id": evenements.id}) }}';">Supprimer</button>                                 
+                    </div>
+                </div>
+                 {% endfor %}
+                 <br><br><br>
+            </div> 
+            </br>
+            </br> 
+            <div class="tab-pane active" id="actu">
+            <li class="nav-item">Actualités</a></li> 
+                {% for actualites in actualites %}
+                <div style="align-items: center;" class="row border g-0 rounded shadow-sm">
+                    <div class="col">
+                        <p class="titre">Titre :</p>
+                        <p>{{ actualites.titre }}</p>
+                    </div>
+                    <div class="col">
+                         <p>{{ actualites.text | raw }}</p>
+                    </div>
+                    <div class="col">
+                        <img src="{{ actualites.image }}" class="img-thumbnail dimension">                    
+                    </div>
+                     <div class="col-auto">
+                        <button type="button" class="btn btn-outline-warning" onclick="location.href ='{{ path('editActu', {"id": actualites.id}) }}';">Modifier</button>                           
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-outline-danger" onclick="location.href = '{{ path('deleteActu', {"id": actualites.id}) }}';">Supprimer</button>                                 
+                    </div>
+                </div>
+                 {% endfor %}
+                 <br><br><br>
+            </div>
+
+        </div>  
+    </div>   
+</body>
+
+{% endblock %}

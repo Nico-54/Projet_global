@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<center><h1 id ="titreActu"class="titre">{{ titre }}</h1></center>
+</br>
+
+<section class="actualites">
+        {% for actualites in actualites %}
+        <article>
+            <h3>{{ actualites.titre }}</h3>
+            <h4>{{ actualites.CreatedAt | date('d/m/Y à H:i') }}</h4>
+            <br>
+            <div class="content">
+                <img src="{{ actualites.image }}" alt="">
+                {{ actualites.text | raw }}
+                <br>
+            </div>
+        </article>
+        <br>
+        {% endfor %}
+
+    </section>
+
+{% endblock %}
