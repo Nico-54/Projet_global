@@ -1,0 +1,43 @@
+
+body {
+    background-color: #eaedf2;
+    background: linear-gradient(0deg, #eaedf2 35%, #cbd1fd 89%) center center no-repeat;    
+    min-height: 100vh;
+}
+
+.pageCentre {
+    background-color: #edeff1;
+    border-radius: 25px;
+    padding: 20px;
+    width: 50%;
+    height: auto;
+}
+
+form button {
+    box-shadow: 0 15px 15px #3232321a,0 5px 5px #0000001a;
+    width: 50%;
+}
+
+h2, h1{
+    font-size: 3vw;
+}
+
+h3 {
+    font-size: 2vw;
+}
+
+.commentaire {
+    width: 50%;
+}
+
+.pageCommentaire {
+    background-color: #ffffff;
+    padding: 20px;
+    width: 50%;
+    height: auto;
+    box-shadow: 0 15px 15px #3232321a,0 5px 5px #0000001a;
+}
+
+.backgroundNav {
+    background-color: #edeff1;
+}
