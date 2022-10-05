@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    
+    <style>
+        .spoiler-content 
+        {
+            display : inline-block;
+            width : 0;
+            height : 0 ;
+            opacity : 0;
+            overflow : hidden;
+            transition : opacity 0.5s;
+        }
+
+        .spoiler-content.visible
+        {
+            display : inline;
+            width : auto;
+            height : auto;
+            opacity : 1;
+        }
+    </style>
+    
+    </head>
+
+    <body>
+
+        <p>
+            X et Y s'affronte sur un toit en pleine guerre des robots.
+        </p>
+
+        <p class = "spoiler">
+            En faite X meurt.
+        </p>
+
+        <p>
+            <span>Y conquit le monde avec ses robots.</span>
+            <span>Mais ses robots le trahisse et il se cache.</span>
+            <span>Les robots le retrouve <span class = "spoiler">et le tue.</span>
+        </span>
+        </p>
+
+        <script src = "spoiler.js"> </script>
+    </body>
+</html>
