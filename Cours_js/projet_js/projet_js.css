@@ -1,0 +1,36 @@
+table {
+    width: 100%;
+    border: 1px solid black;
+    margin-top: 15px;
+}
+
+.centerElement {
+    width: 100%;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.border {
+    border: 2px solid black;
+}
+
+.imgSize {
+    width: 300px;
+    height: 250px;
+}
+
+#form {
+    border: 2px solid blue;
+    width: 20%;
+}
+
+.search {
+    align-items: right;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.delete {
+    margin-left: 10px;
+}

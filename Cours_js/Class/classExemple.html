@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="classExemple.css">
+    <script src="tableClass.js"></script>
+    <title>Classe</title>
+</head>
+
+<body>
+    <h1 class="title">Liste</h1>
+    <input type="text" placeholder="Recherche" id="search">
+    <table id="table">
+
+
+    </table>
+
+</body>
+
+</html>
+
+<script>
+    var local = JSON.parse(localStorage.getItem('data'));//source données
+    var headTitle = ['Nom', 'Prenom', 'Photo'];//tritre en-tête
+    var valueShow = ['Nom', 'Prenom', 'Photo'];//données à afficher
+
+    //variable table qu'on créer
+    var table = new Table(headTitle, local, valueShow);
+    var timeOut;
+
+    /*document.getElementById("title").innerHTML = "Liste de ";
+
+    document.getElementById("title").innerHTML = "Liste de ";
+
+    const node = document.createElement("div");
+    const textnode = document.createTextNode("avec une classe");
+    node.appendChild(textnode);
+    document.getElementById('title').appendChild(node);*/
+
+    document.getElementById('table').innerHTML = table.constituateTable();
+
+    document.getElementById('search').addEventListener('keyup', (event) => {
+        if (clearTimeout(timeOut));
+        timeOut = setTimeout(() => {
+            let elementTable = [];
+            if (event.target.value) {
+                elementTable = local.filter(value => value.Nom.includes(event.target.value) || value.Prenom.includes(event.target.value));//affichage tableau filtrer
+            } else {
+                elementTable = local;//affichage tableau total
+            }
+            table.setTableDataSource(elementTable);//source données
+            document.getElementById('table').innerHTML = table.constituateTable();//affichage tableau
+        }, 500)
+    })
+</script>

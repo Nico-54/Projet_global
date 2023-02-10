@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet JS</title>
+    <link rel="stylesheet" href="projet_js.css">
+    <script src="../Class/tableClass.js"></script>
+</head>
+
+<body>
+    <h1 class="centerElement">Liste des informations</h1>
+
+    <form id="form">
+        <div class="centerElement">
+            <input type="text" id="Nom" placeholder="Nom" />
+        </div>
+
+        <div class="centerElement">
+            <input type="text" id="Prenom" placeholder="Prénom" />
+        </div>
+
+        <div class="centerElement">
+            <input type="text" id="Photo" placeholder="Photo" />
+        </div>
+
+        <div class="centerElement">
+            <button type="submit">Enregistrer</button>
+        </div>
+    </form>
+
+    <div class="search">
+        <input type="text" placeholder="Recherche" id="search">
+    </div>
+
+    <table id="table"></table>
+</body>
+
+</html>
+
+<script src="projet_js.js"></script>
+<script>
+    var local = JSON.parse(localStorage.getItem('data'));//source données
+    var headTitle = ['Nom', 'Prenom', 'Photo', 'Bouton'];//tritre en-tête
+    var valueShow = ['Nom', 'Prenom', 'Photo'];//données à afficher
+
+    //variable table qu'on créer
+    var table = new Table(headTitle, local, valueShow);
+    var timeOut;
+
+    document.getElementById('table').innerHTML = table.constituateTable();
+
+    document.getElementById('search').addEventListener('keyup', (event) => {
+        if (clearTimeout(timeOut));
+        timeOut = setTimeout(() => {
+            let elementTable = [];
+            if (event.target.value) {
+                elementTable = local.filter(value => value.Nom.includes(event.target.value) || value.Prenom.includes(event.target.value));//affichage tableau filtrer
+            } else {
+                elementTable = local;//affichage tableau total
+            }
+            table.setTableDataSource(elementTable);//source données
+            document.getElementById('table').innerHTML = table.constituateTable();//affichage tableau
+        }, 500)
+    });
+
+    document.getElementById('table').addEventListener('click', (event) => {
+        if (event.target.classList.contains('delete')) {
+            let tr = event.target.parentNode.parentNode;
+            let nom = tr.querySelector('td:nth-child(1)').textContent;
+            let prenom = tr.querySelector('td:nth-child(2)').textContent;
+            let photo = tr.querySelector('td:nth-child(3)').textContent;
+            table.deleteData(nom, prenom);
+        }
+        document.getElementById('table').innerHTML = table.constituateTable();
+    });
+</script>

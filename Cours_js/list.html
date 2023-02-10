@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="list.css" media="screen" type="text/css">
+    <title>Apprentissage HTML</title>
+</head>
+
+<body>
+    <h1 id="title">Liste de contact</h1>
+
+    <table id="table"></table>
+
+</body>
+
+</html>
+
+<script>
+    document.getElementById("title").innerHTML = "Liste de conta";
+    document.getElementById("title").style.color = "red";
+
+    //document.getElementById("table").innerHTML = "<tr><td>Salut</td><td>Salut</td><td>Salut</td><td>Salut</td><td>Salut</td></tr>";
+
+    var headTable = ['Nom', 'Prénom', 'Photo'];
+
+    var dataTable = [
+        {
+            'Nom': "Spider",
+            'Prénom': "Man",
+            'Photo': "https://upload.wikimedia.org/wikipedia/commons/9/90/Spiderman.JPG",
+        },
+        {
+            'Nom': "Spider",
+            'Prénom': "Man",
+            'Photo': "https://upload.wikimedia.org/wikipedia/commons/9/90/Spiderman.JPG",
+        },
+        {
+            'Nom': "Spider",
+            'Prénom': "Man",
+            'Photo': "https://upload.wikimedia.org/wikipedia/commons/9/90/Spiderman.JPG",
+        }
+    ];
+
+    let tableHTML = "";
+    /**
+    En-tête
+    **/
+    function headTableFunction(head = [], dataTable, callBack) {
+        tableHTML = "<tr>";
+        for (let i = 0; i < head.length; i++) {
+            tableHTML += '<td>' + head[i] + '</td>';
+        }
+        tableHTML += "</tr>";
+        sourceTable(dataTable, callBack);
+    }
+
+    /**Genere contenu tableau**/
+    function sourceTable(dataTable, callBack) {
+
+        dataTable.forEach(element => {
+            tableHTML += "<tr>";
+            tableHTML += '<td class="border">' + element['Nom'] + '</td>';
+            tableHTML += '<td class="border">' + element['Prénom'] + '</td>';
+            tableHTML += '<td class="border"><img class="imgSize" src=\'' + element['Photo'] + '\'></td>';
+            tableHTML += "</tr>";
+        });
+        callBack(tableHTML);
+    }
+
+    /**Affichage tableau**/
+    function callBack(html) {
+        document.getElementById('table').innerHTML = html;
+    }
+
+    function constituerTable() {
+        headTableFunction(headTable, dataTable, callBack);
+    }
+
+    constituerTable();
+
+</script>

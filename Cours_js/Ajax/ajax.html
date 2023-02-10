@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Class/classExemple.css">
+    <script src="../Class/tableClass.js"></script>
+    <title>Classe</title>
+</head>
+
+<body>
+    <h1 class="title">Liste</h1>
+
+    <div style="display: flex">
+
+    </div>
+
+    <table id="table">
+
+
+    </table>
+
+</body>
+
+</html>
+
+<script>
+    var local = JSON.parse(localStorage.getItem('data'));
+    var headTitle = ['ID', 'Name', 'Username', 'GSM', 'Email'];
+    var valueShow = ['id', 'name', 'username', 'phone', 'email'];
+    //var table = new Table(headTitle, local, valueShow);
+    var timeOut;
+
+
+    document.getElementById('table').innerText = "Liste user API";
+
+    var table = new Table(headTitle, local, valueShow);
+
+    function apiListUsers() {
+        try {
+            let url = "https://jsonplaceholder.typicode.com/users";
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                //console.log(this);
+                let dataUsers = JSON.parse(xhttp.responseText);
+                console.log(dataUsers);
+                table.setTableDataSource(dataUsers);
+                document.getElementById("table").innerHTML = table.constituateTable();
+            }
+            xhttp.open("GET", url);
+            xhttp.send();
+        } catch (error) {
+            console.warn(error);
+        }
+    }
+    //apiListUsers();
+    let promess = new Promise((resolve, reject) => {
+        let url = "https://jsonplaceholder.typicode.com/users";
+        const xhttp = new XMLHttpRequest();
+
+        xhttp.open("GET", url);
+        xhttp.addEventListener("load", function () {
+            if (xhttp.status === 200) {
+                resolve(xhttp.responseText);//retour promesse
+            } else {
+                reject("Cassé !" + request.status)//rejet promesse
+            }
+        }, false);
+
+        xhttp.addEventListener("error", function () {
+            reject("Double cassé !" + request.status)
+        }, false)
+
+        xhttp.send();
+    });
+
+    promess.then(data => {
+        let dataUsers = JSON.parse(data);
+        console.log(dataUsers);
+        table.setTableDataSource(dataUsers);
+        document.getElementById("table").innerHTML = table.constituateTable();
+
+        let mapData = dataUsers.map(element => element['name']);
+
+
+        for (let element of mapData) {
+            const node = document.createElement("li");
+            const li = document.createTextNode(element);
+            node.appendChild(li);
+            document.getElementById("table").appendChild(node);
+        }
+        console.log(mapData);
+    })
+
+    //document.getElementById("table").innerHTML = table.constituateTable();
+</script>
